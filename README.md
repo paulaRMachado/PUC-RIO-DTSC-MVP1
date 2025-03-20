@@ -2,17 +2,21 @@
 ![image](https://github.com/user-attachments/assets/e7b32e82-8451-4d0f-82ef-302993d4c875)
 
 ## Objetivo
-A transição energética para fontes mais limpas é um dos desafios globais mais importantes da atualidade. Esse estudo busca entender como os países estão mudando suas matrizes energéticas e quais são as tendências futuras para um mundo mais sustentável.
+A transição energética para fontes mais limpas é um dos desafios globais mais importantes da atualidade. O Acordo de Paris, assinado em 2015, estabeleceu metas para redução de emissões de gases de efeito estufa, promovendo uma maior adoção de energias renováveis e uma redução do consumo de combustíveis fósseis.
 
-O objetivo deste trabalho é analisar o consumo de energia global, identificando padrões de consumo por país e fonte de produção (renovável e não renovável). A análise busca compreender como diferentes países utilizam seus recursos energéticos, quais fontes de energia são predominantes e como a matriz energética está evoluindo ao longo dos anos.
+Este trabalho busca entender se os países estão cumprindo suas metas, quais estão se destacando na transição energética e quais enfrentam dificuldades. Além disso, será avaliado o impacto da saída ou da mudança de postura de alguns países em relação ao acordo, na política energética global.
 
 Questionamentos:
 1.	Quais países possuem o maior consumo de energia total?
-2.	Quais países são mais dependentes de fontes não renováveis (petróleo, carvão, gás natural)?
-3.	Quais países possuem maior participação de fontes renováveis (hidrelétrica, solar, eólica)?
-4.	Os países mais industrializados são os que mais consomem energia?
+2.	Quais países são mais dependentes de fontes não renováveis?
+3.	Quais países possuem maior participação de fontes renováveis?
+4.	Como a matriz energética de cada país evoluiu ao longo do tempo?
 5.	Há padrões regionais no consumo de energia (exemplo: Europa vs América do Sul)?
 6.	Quais países estão reduzindo o consumo de fontes fósseis ao longo do tempo?
+7.	Os países signatários do Acordo de Paris estão reduzindo suas emissões de carbono?
+8.	Quais países estão mais alinhados com as metas do Acordo de Paris?
+9.	Houve impacto significativo no consumo energético de países que saíram do Acordo de Paris?
+10.	A saída ou redução de compromisso de alguns países afetou o progresso global na redução de emissões?
 
 
 ## Coleta
