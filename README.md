@@ -1,4 +1,5 @@
 # PUC-RIO-DTSC-MVP1
+![image](https://github.com/user-attachments/assets/e7b32e82-8451-4d0f-82ef-302993d4c875)
 
 ## Objetivo
 A transição energética para fontes mais limpas é um dos desafios globais mais importantes da atualidade. Esse estudo busca entender como os países estão mudando suas matrizes energéticas e quais são as tendências futuras para um mundo mais sustentável.
