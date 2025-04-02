@@ -43,7 +43,7 @@ Um script em Python executou o comando:
 ![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
 
 ### Tratamentos iniciais
-Foram realizados tratamentos de normalização da base dadaos 
+Foram realizados tratamentos de normalização de chave da base dados 
 
 ## Modelagem 
 Será avaliada a qualidade da modelagem dos dados (1,0 pt) e documentação do Catálogo de Dados (1,0 pt).
