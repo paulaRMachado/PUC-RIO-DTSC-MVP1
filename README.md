@@ -32,7 +32,7 @@ Formato dos Dados: CSV
 Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
 
-![seleção](https://github.com/user-attachments/assets/f9e403d8-faa9-4330-ac8b-645e72c1a724)
+![seleção](https://github.com/user-attachments/assets/a7a6b0b1-0b9b-44b0-b1b2-3ff22b3be8ae)
 
 
 ### Extração dos dados
