@@ -42,12 +42,46 @@ Um script em Python executou o comando:
 
 ![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
 
+### Tratamentos iniciais
+Foram realizados tratamentos de normalização da base dadaos 
 
 ## Modelagem 
 Será avaliada a qualidade da modelagem dos dados (1,0 pt) e documentação do Catálogo de Dados (1,0 pt).
 
+Definição da Estrutura: Criação de um modelo que organiza como os dados serão armazenados, estruturados e relacionados. Isso pode incluir modelos conceituais, lógicos e físicos.
+
+Boas Práticas: Aplicação de técnicas como normalização ou, quando necessário, desnormalização para otimizar a performance e garantir a integridade dos dados.
+
+Diagramas e Relacionamentos: Uso de diagramas (como ER, por exemplo) para visualizar e documentar entidades, atributos e os relacionamentos entre eles.
+
+Aderência aos Requisitos: Garantia de que o modelo atende às necessidades do negócio e facilita análises futuras.
+
+Documentação do Catálogo de Dados:
+
+Repositório Central: Criação de um documento ou sistema (como um catálogo de dados) que liste e descreva todos os conjuntos de dados disponíveis.
+
+Metadados e Definições: Registro de informações detalhadas sobre cada dataset, como origem, formato, periodicidade de atualização, definições das colunas e regras de negócio associadas.
+
+Transparência e Governança: Facilita o entendimento, a governança e o uso correto dos dados por todos os stakeholders, promovendo consistência e qualidade na interpretação das informações.
+
 ## Carga  
 Será avaliada a qualidade da documentação da carga dos dados, bem como a corretude e persistência dos dados na plataforma de nuvem após a carga.
+
+Processo de Ingestão:
+
+Pipeline de Carga: Descrição do fluxo que leva os dados coletados e transformados até a sua persistência na nuvem.
+
+Tipo de Carga: Especificar se é full load ou incremental, e as estratégias de atualização (merge, upsert, etc.).
+
+Persistência na Nuvem (Databricks):
+
+Ambiente: Configuração do cluster Databricks e versão do Spark utilizada.
+
+Destino: Armazenamento dos dados em tabelas Delta Lake ou outros formatos otimizados para consultas e análises.
+
+Organização: Estruturação dos dados (ex: particionamento por data ou categoria) e controle de versionamento.
+
+Validação: Procedimentos de verificação da integridade dos dados após a carga, com logs e monitoramento para identificar possíveis falhas.
 
 ## Análise 
 Serão avaliados a análise de qualidade dos dados (1,0 pt) e da solução do problema de forma correta (0 pt) e bem analisada pela discussão a partir das respostas obtidas (1,0 pt).
