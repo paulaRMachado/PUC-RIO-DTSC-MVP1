@@ -32,15 +32,13 @@ Formato dos Dados: CSV
 Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
 
-
-Licença e Termos de Uso:
-Consulte a página do dataset para entender a licença aplicada e quaisquer restrições ou condições de uso.
 ![seleção](https://github.com/user-attachments/assets/32a86b1f-8ab8-43b1-a051-ffdcd278eca8)
 
 ### Extração dos dados
 A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo kaggle.json com as credenciais de acesso à conta do Kaggle para permitir o uso da API.
 
 Um script em Python executou o comando:
+
 ![extração](https://github.com/user-attachments/assets/831eca3e-aa6e-436b-8bfa-97090e81d148)
 
 ## Modelagem 
