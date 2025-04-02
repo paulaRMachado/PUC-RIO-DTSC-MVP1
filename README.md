@@ -21,6 +21,10 @@ Questionamentos:
 
 ## Coleta
 Será avaliada a documentação sobre a coleta dos conjuntos de dados e a persistência dos mesmos na plataforma de nuvem.
+![seleção](https://github.com/user-attachments/assets/32a86b1f-8ab8-43b1-a051-ffdcd278eca8)
+
+A extração dos dados foi realizada via API com Python
+![extração](https://github.com/user-attachments/assets/831eca3e-aa6e-436b-8bfa-97090e81d148)
 
 ## Modelagem 
 Será avaliada a qualidade da modelagem dos dados (1,0 pt) e documentação do Catálogo de Dados (1,0 pt).
