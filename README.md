@@ -20,7 +20,18 @@ Questionamentos:
 
 
 ## Coleta
-Será avaliada a documentação sobre a coleta dos conjuntos de dados e a persistência dos mesmos na plataforma de nuvem.
+### Fonte de dados
+Fonte: Global Data on Sustainable Energy
+Origem: Kaggle
+URL: https://www.kaggle.com/datasets/anshtanwar/global-data-on-sustainable-energy
+Formato dos Dados: CSV
+
+Descrição:
+Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
+
+
+Licença e Termos de Uso:
+Consulte a página do dataset para entender a licença aplicada e quaisquer restrições ou condições de uso.
 ![seleção](https://github.com/user-attachments/assets/32a86b1f-8ab8-43b1-a051-ffdcd278eca8)
 
 A extração dos dados foi realizada via API com Python
