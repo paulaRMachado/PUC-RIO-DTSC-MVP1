@@ -22,8 +22,11 @@ Questionamentos:
 ## Coleta
 ### Fonte de dados
 Fonte: Global Data on Sustainable Energy
+
 Origem: Kaggle
+
 URL: https://www.kaggle.com/datasets/anshtanwar/global-data-on-sustainable-energy
+
 Formato dos Dados: CSV
 
 Descrição:
