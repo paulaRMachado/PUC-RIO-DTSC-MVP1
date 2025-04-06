@@ -64,6 +64,14 @@ Repositório Central: Criação de um documento ou sistema (como um catálogo de
 
 Metadados e Definições: Registro de informações detalhadas sobre cada dataset, como origem, formato, periodicidade de atualização, definições das colunas e regras de negócio associadas.
 
+![paises_metadados_SQL](https://github.com/user-attachments/assets/efa6c3bc-edd9-41ff-9f27-7eb495eafb67)
+
+![metadados_continente](https://github.com/user-attachments/assets/bd27e292-6486-4a96-96af-a8d69918e825)
+
+![metadados_dados](https://github.com/user-attachments/assets/14c9c9dc-51d9-4d34-af1c-39db12c8312a)
+
+![metadados_paises](https://github.com/user-attachments/assets/3cf544c2-ad09-460c-aa40-92aa89149566)
+
 Transparência e Governança: Facilita o entendimento, a governança e o uso correto dos dados por todos os stakeholders, promovendo consistência e qualidade na interpretação das informações.
 
 ## Carga  
