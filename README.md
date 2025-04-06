@@ -62,7 +62,8 @@ Documentação do Catálogo de Dados:
 
 Repositório Central: Criação de um documento ou sistema (como um catálogo de dados) que liste e descreva todos os conjuntos de dados disponíveis.
 
-Metadados e Definições: Registro de informações detalhadas sobre cada dataset, como origem, formato, periodicidade de atualização, definições das colunas e regras de negócio associadas.
+### Metadados
+Após a carga dos dados na plataforma Databricks, foi realizada inserção dos metadados utilizando SQL via notebook.
 
 ![paises_metadados_SQL](https://github.com/user-attachments/assets/efa6c3bc-edd9-41ff-9f27-7eb495eafb67)
 
@@ -72,10 +73,11 @@ Metadados e Definições: Registro de informações detalhadas sobre cada datase
 
 ![metadados_paises](https://github.com/user-attachments/assets/3cf544c2-ad09-460c-aa40-92aa89149566)
 
-Transparência e Governança: Facilita o entendimento, a governança e o uso correto dos dados por todos os stakeholders, promovendo consistência e qualidade na interpretação das informações.
 
 ## Carga  
-Será avaliada a qualidade da documentação da carga dos dados, bem como a corretude e persistência dos dados na plataforma de nuvem após a carga.
+Inici\lmente foi necessário criar o cluster no qual os dados seriam armazenados.
+
+![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
 
 Processo de Ingestão:
 
