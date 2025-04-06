@@ -79,10 +79,9 @@ Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados
 
 ![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
 
-Em seguida foram criadas as 3 tabelas através do Create Table with UI
+Em seguida foram criadas as 3 tabelas através do **Create Table with UI** e em seguida relaizados ajustes nos DataTypes e CollumnNames.
 
 ![criação tabela](https://github.com/user-attachments/assets/732e44f9-e6f2-4926-a265-504a8504c5aa)
-
 ![ajustes de tipos](https://github.com/user-attachments/assets/58ac2cb9-ea4b-4d3a-8e70-54d98f4018f0)
 
 Processo de Ingestão:
