@@ -76,10 +76,9 @@ Após a carga dos dados na plataforma Databricks, foi realizada inserção dos m
 
 ## Carga  
 Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados, seguindo a configuração padrão do Databrick para clusters.
-<figure>
+
 ![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
-  <figcaption><em>Legenda da imagem</em></figcaption>
-</figure>figure>
+
 
 Em seguida foram criadas as 3 tabelas através do **Create Table with UI** e em seguida relaizados ajustes nos DataTypes e CollumnNames.
 
