@@ -75,13 +75,19 @@ Após a carga dos dados na plataforma Databricks, foi realizada inserção dos m
 
 
 ## Carga  
-Inici\lmente foi necessário criar o cluster no qual os dados seriam armazenados.
+Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados, seguindo a configuração padrão do Databrick para clusters.
 
 ![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
 
+Em seguida foram criadas as 3 tabelas através do Create Table with UI
+
+![criação tabela](https://github.com/user-attachments/assets/732e44f9-e6f2-4926-a265-504a8504c5aa)
+
+![ajustes de tipos](https://github.com/user-attachments/assets/58ac2cb9-ea4b-4d3a-8e70-54d98f4018f0)
+
 Processo de Ingestão:
 
-Pipeline de Carga: Descrição do fluxo que leva os dados coletados e transformados até a sua persistência na nuvem.
+Pipeline de arga: Descrição do fluxo que leva os dados coletados e transformados até a sua persistência na nuvem.
 
 Tipo de Carga: Especificar se é full load ou incremental, e as estratégias de atualização (merge, upsert, etc.).
 
