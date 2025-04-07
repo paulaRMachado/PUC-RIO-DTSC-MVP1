@@ -23,18 +23,14 @@ Questionamentos:
 ### Fonte de dados
 
 Origem dos Dados:
-Dataset “Global Data on Sustainable Energy” obtido via Kaggle.
+World Energy Statistics (2000-2024) - Dataset “Global Data on Sustainable Energy” obtido via Kaggle.
 
 Descrição:
-Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
+Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países coletados de relatórios de energia governamentais, artigos de pesquisas ambientais e pesquisas de produção de energia. Última atualização em março de 2025
 
 ![seleção](https://github.com/user-attachments/assets/a7a6b0b1-0b9b-44b0-b1b2-3ff22b3be8ae)
-CC0: Public Domain
+Licença: CC0: Public Domain
 
-`Source: World Energy Statistics (2000-2024)
-Data Collected from: Government Energy Reports, Environmental Research Papers, and Energy Surveys
-Last Updated: March 2025
-Accuracy Level: 98%`
 
 ### Extração dos dados
 A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
@@ -50,14 +46,22 @@ https://brasilescola.uol.com.br/geografia/acordo-paris.htm#:~:text=Resumo%20sobr
 
 ## Modelagem 
 
-Definição da Estrutura: Criação de um modelo que organiza como os dados serão armazenados, estruturados e relacionados. Isso pode incluir modelos conceituais, lógicos e físicos.
+Foi adotada uma estrutura de modelo de dados em **Esquema Snowflake**, típica de ambientes de Data Warehouse, com o objetivo de organizar e facilitar a análise de indicadores energéticos, ambientais e econômicos por país e ano.
 
-Boas Práticas: Realização de tratamentos para a normalização das chaves da base.
+A modelagem segue os princípios de normalização e separação de dimensões, garantindo reuso, clareza e escalabilidade.
 
-Diagramas e Relacionamentos: Uso de diagramas (como ER, por exemplo) para visualizar e documentar entidades, atributos e os relacionamentos entre eles.
+**Componentes principais**
+Tabela Fato - `dados`: armazena os indicadores quantitativos por país e ano (ex: acesso à eletricidade, emissões de CO₂, crescimento do PIB, etc.)
+
+Chave de ligação: `id_pais`
+
+Tabelas de Dimensão 
+`paises`: contém atributos geográficos e demográficos de cada país (nome, localização, área, densidade, etc.), ligada à tabela fato via id_pais
+`continentes`: representa os continentes associados aos países, normalizada como uma dimensão da dimensão `paises`, ligada via `id_continente`
 
 ![diagrama ER](https://github.com/user-attachments/assets/479f6b7d-fac2-4fba-8c76-01af248c99da)
 
+![diagrama conceitual](https://github.com/user-attachments/assets/a1ad3be3-ce2a-444d-87b9-70350314c9cb)
 
 Aderência aos Requisitos: Garantia de que o modelo atende às necessidades do negócio e facilita análises futuras.
 
