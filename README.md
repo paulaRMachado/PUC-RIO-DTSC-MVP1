@@ -56,6 +56,9 @@ Boas Práticas: Aplicação de técnicas como normalização ou, quando necessá
 
 Diagramas e Relacionamentos: Uso de diagramas (como ER, por exemplo) para visualizar e documentar entidades, atributos e os relacionamentos entre eles.
 
+![diagrama ER](https://github.com/user-attachments/assets/479f6b7d-fac2-4fba-8c76-01af248c99da)
+
+
 Aderência aos Requisitos: Garantia de que o modelo atende às necessidades do negócio e facilita análises futuras.
 
 Documentação do Catálogo de Dados:
