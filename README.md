@@ -21,13 +21,9 @@ Questionamentos:
 
 ## Coleta
 ### Fonte de dados
-Fonte: Global Data on Sustainable Energy
 
-Origem: Kaggle
-
-URL: https://www.kaggle.com/datasets/anshtanwar/global-data-on-sustainable-energy
-
-Formato dos Dados: CSV
+Origem dos Dados:
+Dataset “Global Data on Sustainable Energy” obtido via Kaggle.
 
 Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
@@ -36,7 +32,7 @@ Esse dataset reúne informações globais sobre energia sustentável, englobando
 
 
 ### Extração dos dados
-A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo kaggle.json com as credenciais de acesso à conta do Kaggle para permitir o uso da API.
+A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle para permitir o uso da API.
 
 Um script em Python executou o comando:
 
@@ -52,7 +48,7 @@ Será avaliada a qualidade da modelagem dos dados (1,0 pt) e documentação do C
 
 Definição da Estrutura: Criação de um modelo que organiza como os dados serão armazenados, estruturados e relacionados. Isso pode incluir modelos conceituais, lógicos e físicos.
 
-Boas Práticas: Aplicação de técnicas como normalização ou, quando necessário, desnormalização para otimizar a performance e garantir a integridade dos dados.
+Boas Práticas: Realização de tratamentos para a normalização das chaves da base.
 
 Diagramas e Relacionamentos: Uso de diagramas (como ER, por exemplo) para visualizar e documentar entidades, atributos e os relacionamentos entre eles.
 
