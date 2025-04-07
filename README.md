@@ -29,7 +29,12 @@ Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países.
 
 ![seleção](https://github.com/user-attachments/assets/a7a6b0b1-0b9b-44b0-b1b2-3ff22b3be8ae)
+CC0: Public Domain
 
+`Source: World Energy Statistics (2000-2024)
+Data Collected from: Government Energy Reports, Environmental Research Papers, and Energy Surveys
+Last Updated: March 2025
+Accuracy Level: 98%`
 
 ### Extração dos dados
 A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
