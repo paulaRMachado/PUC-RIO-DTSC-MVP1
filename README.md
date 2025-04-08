@@ -23,7 +23,7 @@ Questionamentos:
 ### Fonte de dados
 
 Origem dos Dados:
-World Energy Statistics (2000-2024) - Dataset “Global Data on Sustainable Energy” obtido via Kaggle.
+World Energy Statistics - Dataset “Global Data on Sustainable Energy” obtido via Kaggle.
 
 Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países coletados de relatórios de energia governamentais, artigos de pesquisas ambientais e pesquisas de produção de energia. Última atualização em março de 2025
