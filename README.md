@@ -87,15 +87,9 @@ Tabelas de Dimensão
 Documentação do Catálogo de Dados:
 
 ### Metadados
-Após a carga dos dados na plataforma Databricks, foi realizada inserção dos metadados utilizando SQL via notebook.
+Após a carga dos dados na plataforma Databricks e as tranformações, foi realizada inserção dos metadados utilizando SQL via notebook.
 
-![paises_metadados_SQL](https://github.com/user-attachments/assets/efa6c3bc-edd9-41ff-9f27-7eb495eafb67)
 
-![metadados_continente](https://github.com/user-attachments/assets/bd27e292-6486-4a96-96af-a8d69918e825)
-
-![metadados_dados](https://github.com/user-attachments/assets/14c9c9dc-51d9-4d34-af1c-39db12c8312a)
-
-![metadados_paises](https://github.com/user-attachments/assets/3cf544c2-ad09-460c-aa40-92aa89149566)
 ## Análise 
 
 ### Qualidade dos dados
