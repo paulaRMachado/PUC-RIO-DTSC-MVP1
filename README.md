@@ -1,5 +1,5 @@
 # PUC-RIO-DTSC-MVP1
-![image](https://github.com/user-attachments/assets/e7b32e82-8451-4d0f-82ef-302993d4c875)
+![Abertura](img/banner.jpg)
 
 ## Objetivo
 A transição energética para fontes mais limpas é um dos desafios globais mais importantes da atualidade. O Acordo de Paris, assinado em 2015, estabeleceu metas para redução de emissões de gases de efeito estufa, promovendo uma maior adoção de energias renováveis e uma redução do consumo de combustíveis fósseis.
@@ -28,8 +28,7 @@ World Energy Statistics - Dataset “Global Data on Sustainable Energy” obtido
 Descrição:
 Esse dataset reúne informações globais sobre energia sustentável, englobando dados como indicadores de produção, consumo, e outras métricas relevantes para a análise do setor de energia em diversos países coletados de relatórios de energia governamentais, artigos de pesquisas ambientais e pesquisas de produção de energia. Última atualização em março de 2025
 
-![seleção](https://github.com/user-attachments/assets/a7a6b0b1-0b9b-44b0-b1b2-3ff22b3be8ae)
-Licença: CC0: Public Domain
+![Seleção](img/selecao.png)
 
 
 ### Extração dos dados
@@ -37,33 +36,32 @@ Não foi possível fazer a extração dos dados diretamente para o ambiente do D
 
 Um script em Python executou o comando:
 
-![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
+![Extração](img/extracao.png)
 
-### Tratamentos iniciais
-Foram realizados tratamentos de normalização de chave da base dados e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base em informações obtidas no site:
 
 ## Carga  
 Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados, seguindo a configuração padrão do Databrick para clusters.
 
-![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
+![Cluster](img/criacaoCLUSTER.png)
 
 
 Em seguida foi realizado o full load dos dados brutos e a partir do notebook criado no momento da carga foram separadas e criadas as 3 tabelas como relatado no item **Tratamentos iniciais - Transformação**.
 
-![criação tabela](https://github.com/user-attachments/assets/732e44f9-e6f2-4926-a265-504a8504c5aa)
-![ajustes de tipos](https://github.com/user-attachments/assets/58ac2cb9-ea4b-4d3a-8e70-54d98f4018f0)
+![Tabela](img/criacaoTabela.png)
+
 
 Persistência na Nuvem: (Databricks Community): Como o Databricks Community desativa o cluster, o dado, nesse caso NÃO é persistente, precisando ser recarregado a cada nova entrada na plataforma
 
 
 ### Tratamentos iniciais - Transformação
 Foram realizados tratamentos de normalização de chave da base dados, já iniciando o processo de modelagem, e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base em informações obtidas no site:
+
 https://brasilescola.uol.com.br/geografia/acordo-paris.htm#:~:text=Resumo%20sobre%20o%20Acordo%20de%20Paris,-Acordo%20de%20Paris&text=%C3%89%20ratificado%20por%20194%20partes,aumento%20de%201%2C5%20%C2%BAC.
 
 
-![Tranformacoes iniciais](https://github.com/user-attachments/assets/1c963369-1ccc-45e4-a596-eb9c7d425738)
+![Transformações](img/Tranformacoes_iniciais.png)
 
-O processo completo pode ser visto no Notebook **Transformações do dado bruto**
+:rotating_light: O processo completo pode ser visto no Notebook [**Transformações do dado bruto**](transformacoes_do_dado_bruto.ipynb).
 
 
 
@@ -73,14 +71,18 @@ Foi adotada uma estrutura de modelo de dados em **Esquema Snowflake**, típica d
 
 A modelagem segue os princípios de normalização e separação de dimensões, garantindo reuso, clareza e escalabilidade mesmo que, para esse caso, não haja nova acoplagem de dados mais recentes. 
 
-**Componentes principais**
+### Componentes principais
 
-Tabela Fato - `dados`: armazena os indicadores quantitativos por país e ano (ex: acesso à eletricidade, emissões de CO₂, crescimento do PIB, etc.)
+Tabela Fato
+
+`dados`: armazena os indicadores quantitativos por país e ano (ex: acesso à eletricidade, emissões de CO₂, crescimento do PIB, etc.)
 
 Chave de ligação: `id_pais`
 
-Tabelas de Dimensão 
-`paises`: contém atributos geográficos e demográficos de cada país (nome, localização, área, densidade, etc.), ligada à tabela fato via id_pais
+Tabelas de Dimensão
+
+`paises`: contém atributos geográficos e demográficos de cada país (nome, localização, área, densidade, etc.), ligada à tabela fato via `id_pais`.
+
 `continentes`: representa os continentes associados aos países, normalizada como uma dimensão da dimensão `paises`, ligada via `id_continente`
 
 <img src="img/diagrama_ER.png" alt="Diagrama Relacional" width="500">
@@ -88,7 +90,7 @@ Tabelas de Dimensão
 <img src="img/diagrama_conceitual.png" alt="Diagrama Conceitual" width="500">
 
 
-[📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
+:rotating_light:[📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
 
 ### Metadados
 Após a carga dos dados na plataforma Databricks e as tranformações, foi realizada inserção dos metadados utilizando SQL via notebook.
@@ -98,34 +100,44 @@ Após a carga dos dados na plataforma Databricks e as tranformações, foi reali
 
 ### Qualidade dos dados
 
-![qualidade_dados](https://github.com/user-attachments/assets/540cf834-7b55-4986-81ee-c67828e511a1)
-![qualidade_paises](https://github.com/user-attachments/assets/4d86a33d-bb01-46dd-a24b-390510c95364)
+<img src="img/qualidade_paises.png" alt="Tabela pais" width="400">
+
+<img src="img/qualidade_dados.png" alt="Tabela dados" width="500">
+De modo geral os principais indicadores que serão utilizados na possuem acima de 95% dos dados. A grande ausência de dados em indicadores como `electricity_nuclear` podem indicar que certos países não reportam ou **não utilizam** energia nuclear. Já os indicadores `renewable_energy`, `financial_flows_developing_countries` e `renewable_generating_capacity_per_capita` devem ser descartados ou usados com muito cuidado e filtragem.
 
 ### Solução do problema
-A primeira que questão proposta `Quais países possuem o maior consumo de energia total?` não estipulava um período de análise. Logo, determinei o recorte de últimos 5 anos (2015-2020). Realizei as queries com 2 focos: o consumo total do país e o consumo dos países per capita para  entender se haveria correspondência.
+As queries que respondem as questões podem ser consultadas no notebook :rotating_light:[]
 
-| país           | Consumo total de eletricidade em TWh | Consumo médio per capita |
-|----------------|----------------------------|--------|
-| China          | 40754.39                  |26813.78|
-| United States  | 24626.97                  |78254.74|
-| India          | 8958.35                   |6367|
-| Japan          | 5987.22                   |40861.68|
-| Canada         | 3816.42                   |108686.58|
+1.`Quais países possuem o maior consumo de energia total?` 
+Não há um período de análiseestipulado. Logo, determinei o recorte de últimos 5 anos (2015-2020). Realizei as queries com 2 focos: o consumo total do país e o consumo dos países per capita para  entender se haveria correspondência.
+
+Respondendo literalmente a questão proposta entende-se que os países com maior consumo total refletem não apenas o tamanho de suas populações, mas também o grau de industrialização e demanda energética. Os EUA com ambos os indicadores elevados destaca-se  Note que a Índia apesar de estar entre os 5 maiores consumidores possui o mais baixo consumo per capita 
 
 
-Abaixo os países com maior consumo per capita
+| país           | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
+|----------------|----------------------------|--------- |
+| China          | 40.754,39                  |26.813,78 |
+| United States  | 24.626,97                  |78.254,74 |
+| India          | 8.958,35                   |6.367     |
+| Japan          | 5.987,22                   |40.861,68 |
+| Canada         | 3.816,42                   |108.686,58|
 
-|país	    |Consumo médio per capita |
-|-------    |-------------------|
-|Qatar	    |211679.29|
-|Iceland	|179074.73|
-|Singapore	|159826.6|
-|Bahrain	|148473.13|
-|United Arab Emirates|	134892.35|
 
-`Quais países são mais dependentes de fontes não renováveis?`
+Entretanto, quando o foco se volta ao consumo per capita, o panorama muda consideravelmente. Países com pequena população, alta renda per capita e climas extremos — como Qatar, Islândia , Emirados Árabes e Bahrain.
 
-Os dados revelam que 11 países dependem 100% de fontes não renováveis (combustíveis fosseis e nuclear)
+|país	    |Consumo médio per capita kWh|
+|-----------|-----------|
+|Qatar	    |211.679,29 |
+|Iceland	|179.074,73 |
+|Singapore	|159.826,6  |
+|Bahrain	|148.473,13 |
+|United Arab Emirates|	134.892,35|
+
+A dissociação entre os rankings revela uma dinâmica importante: enquanto países como China e Índia concentram os maiores consumos totais, isso se deve majoritariamente ao tamanho populacional, e não a um alto consumo individual. Já Islândia e Emirados Árabes Unidos, embora não entrem no topo de consumo em  termos absolutos, apresentam padrões de consumo individual significativamente elevados.
+
+2.`Quais países são mais dependentes de fontes não renováveis?`
+Para esse questionamento, determinei que apenas os dados do último ano registrado devem ser considerados.
+Os dados revelam que, em 2020, 11 países dependiam 100% de fontes não renováveis (combustíveis fosseis e/ou nuclear).É curioso notar que sete desses, são pequenas ilhas, tanto em área quanto em população.
 
 1. Gambia
 2. Guinea-Bissau
@@ -139,5 +151,36 @@ Os dados revelam que 11 países dependem 100% de fontes não renováveis (combus
 10. Bahamas
 11. Comoros
 
+3.`Quais países possuem maior participação de fontes renováveis?`
+Para esse questionamento também determino que apenas os dados do último ano registrado devem ser considerados.
+Segundo os dados de 2020, apenas uma pequena parcela dos países (3,4%) alcançou a totalidade da geração elétrica por meio de fontes renováveis.
+
+|país	    |Percentual de energia renovável na matriz|
+|-----------|-----------|
+|Iceland    |100% |
+|Nepal	    |100% |
+|Lesotho	|100% |
+|Central African Republic|100% |
+|Albania|100% |
+|Bhutan |100% |
+
+4.`Há padrões regionais no consumo de energia (exemplo: Europa vs América do Sul)?`
+
+| país          | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
+|---------------|---------------------------|--------- |
+| Asia          | 63124.09                  |37.368,73 |
+| North America | 31116.38                  |28.416,36 |
+| Europe        | 22091.49                  |42.181,9  |
+| South America | 5763.16                   |16.078,87 |
+| Africa        | 4615.16                   |5.564,52  |
+| Oceania       | 1791.09                   |22.916,69 |
+
 ## Autoavaliação 
-A seleção e análise dos dados foi algo relativamento simples. A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notbook Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação.
+A seleção e análise dos dados foi inicialmente algo relativamente simples. A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notbooke Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação e familiarização com pyspark. Com todo o retabalho que tive, identifico que o registro das nomenclaturas dos atributos pode estar levemente irregular. 
+
+Outra dificuldade foi a elaboração do Catálogo de Dados por falta de modelo e do modelo conceitual. Ao buscar por registros de catálogos na internet encontrei muitos itens diferentes, alguns confundidos com dicionario de dadosou até com os metadados. Segui a orientação dada na videoaula o melhor que pude.
+
+## ARQUIVOS
+:rotating_light: [📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
+
+:rotating_light: [Transformações do dado bruto](transformacoes_do_dado_bruto.ipynb).
