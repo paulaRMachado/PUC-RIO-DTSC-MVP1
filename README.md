@@ -33,22 +33,26 @@ Licença: CC0: Public Domain
 
 
 ### Extração dos dados
-Não foi possível fazer a extração dos dados diretamente para o ambiente do Databricks Community, sendo necessário realizar o download para a máquina e posteriro upload no cluster.  A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
+Não foi possível fazer a extração dos dados diretamente para o ambiente do Databricks Community, sendo necessário realizar o download para a máquina e posterior upload no cluster.  A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
 
 Um script em Python executou o comando:
 
 ![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
 
 ### Tratamentos iniciais - Transformação
-Foram realizados tratamentos de normalização de chave da base dados, já iniciando o processo de modelagem, e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base eminformações obtidas no site:
-
+Foram realizados tratamentos de normalização de chave da base dados, já iniciando o processo de modelagem, e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base em informações obtidas no site:
 https://brasilescola.uol.com.br/geografia/acordo-paris.htm#:~:text=Resumo%20sobre%20o%20Acordo%20de%20Paris,-Acordo%20de%20Paris&text=%C3%89%20ratificado%20por%20194%20partes,aumento%20de%201%2C5%20%C2%BAC.
+
+![Tranformacoes iniciais](https://github.com/user-attachments/assets/1c963369-1ccc-45e4-a596-eb9c7d425738)
+
+O processo completo pode ser visto no Notebook **Transformações do dado bruto**
+
 
 ## Modelagem 
 
 Foi adotada uma estrutura de modelo de dados em **Esquema Snowflake**, típica de ambientes de Data Warehouse, com o objetivo de organizar e facilitar a análise de indicadores energéticos, ambientais e econômicos por país e ano.
 
-A modelagem segue os princípios de normalização e separação de dimensões, garantindo reuso, clareza e escalabilidade.
+A modelagem segue os princípios de normalização e separação de dimensões, garantindo reuso, clareza e escalabilidade mesmo que, para esse caso, não haja nova acoplagem de dados mais recentes. 
 
 **Componentes principais**
 
@@ -85,26 +89,13 @@ Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados
 ![criação CLUSTER](https://github.com/user-attachments/assets/71ef5276-17f4-48e3-a771-47c5cb961fd6)
 
 
-Em seguida foram criadas as 3 tabelas através do **Create Table with UI** e em seguida relaizados ajustes nos DataTypes e CollumnNames.
+Em seguida foi realizado o full load dos dados brutos e a partir do notebook criado no momento da carga foram separadas e criadas as 3 tabelas como relatado no item **Tratamentos iniciais - Transformação**.
 
 ![criação tabela](https://github.com/user-attachments/assets/732e44f9-e6f2-4926-a265-504a8504c5aa)
 ![ajustes de tipos](https://github.com/user-attachments/assets/58ac2cb9-ea4b-4d3a-8e70-54d98f4018f0)
 
-Processo de Ingestão:
+Persistência na Nuvem: (Databricks Community): Como o Databricks Community desativa o cluster, o dado, nesse caso NÃO é persistente, precisando ser recarregado a cada nova entrada na plataforma
 
-Pipeline de arga: Descrição do fluxo que leva os dados coletados e transformados até a sua persistência na nuvem.
-
-Tipo de Carga: Especificar se é full load ou incremental, e as estratégias de atualização (merge, upsert, etc.).
-
-Persistência na Nuvem (Databricks):
-
-Ambiente: Configuração do cluster Databricks e versão do Spark utilizada.
-
-Destino: Armazenamento dos dados em tabelas Delta Lake ou outros formatos otimizados para consultas e análises.
-
-Organização: Estruturação dos dados (ex: particionamento por data ou categoria) e controle de versionamento.
-
-Validação: Procedimentos de verificação da integridade dos dados após a carga, com logs e monitoramento para identificar possíveis falhas.
 
 ## Análise 
 
@@ -116,4 +107,4 @@ Validação: Procedimentos de verificação da integridade dos dados após a car
 da solução do problema de forma correta (0 pt) e bem analisada pela discussão a partir das respostas obtidas (1,0 pt).
 
 ## Autoavaliação 
-A seleção e análise dos dados foi algo relativamento simples. A configuração do ambiente de nuvem no databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento.
+A seleção e análise dos dados foi algo relativamento simples. A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notbook Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação.
