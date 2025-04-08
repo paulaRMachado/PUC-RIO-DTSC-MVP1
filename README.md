@@ -33,13 +33,13 @@ Licença: CC0: Public Domain
 
 
 ### Extração dos dados
-A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
+Não foi possível fazer a extração dos dados diretamente para o ambiente do Databricks Community, sendo necessário realizar o download para a máquina e posteriro upload no cluster.  A extração foi realizada via API do Kaggle integrada com Python. Foi configurado o arquivo de autenticação `kaggle.json` com as credenciais de acesso à conta do Kaggle.
 
 Um script em Python executou o comando:
 
 ![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
 
-### Tratamentos iniciais
+### Tratamentos iniciais - Transformação
 Foram realizados tratamentos de normalização de chave da base dados, já iniciando o processo de modelagem, e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base eminformações obtidas no site:
 
 https://brasilescola.uol.com.br/geografia/acordo-paris.htm#:~:text=Resumo%20sobre%20o%20Acordo%20de%20Paris,-Acordo%20de%20Paris&text=%C3%89%20ratificado%20por%20194%20partes,aumento%20de%201%2C5%20%C2%BAC.
@@ -51,6 +51,7 @@ Foi adotada uma estrutura de modelo de dados em **Esquema Snowflake**, típica d
 A modelagem segue os princípios de normalização e separação de dimensões, garantindo reuso, clareza e escalabilidade.
 
 **Componentes principais**
+
 Tabela Fato - `dados`: armazena os indicadores quantitativos por país e ano (ex: acesso à eletricidade, emissões de CO₂, crescimento do PIB, etc.)
 
 Chave de ligação: `id_pais`
@@ -63,11 +64,8 @@ Tabelas de Dimensão
 
 ![diagrama conceitual](https://github.com/user-attachments/assets/a1ad3be3-ce2a-444d-87b9-70350314c9cb)
 
-Aderência aos Requisitos: Garantia de que o modelo atende às necessidades do negócio e facilita análises futuras.
 
 Documentação do Catálogo de Dados:
-
-Repositório Central: Criação de um documento ou sistema (como um catálogo de dados) que liste e descreva todos os conjuntos de dados disponíveis.
 
 ### Metadados
 Após a carga dos dados na plataforma Databricks, foi realizada inserção dos metadados utilizando SQL via notebook.
@@ -109,7 +107,13 @@ Organização: Estruturação dos dados (ex: particionamento por data ou categor
 Validação: Procedimentos de verificação da integridade dos dados após a carga, com logs e monitoramento para identificar possíveis falhas.
 
 ## Análise 
-Serão avaliados a análise de qualidade dos dados (1,0 pt) e da solução do problema de forma correta (0 pt) e bem analisada pela discussão a partir das respostas obtidas (1,0 pt).
+
+### Qualidade dos dados
+
+![qualidade_dados](https://github.com/user-attachments/assets/540cf834-7b55-4986-81ee-c67828e511a1)
+![qualidade_paises](https://github.com/user-attachments/assets/4d86a33d-bb01-46dd-a24b-390510c95364)
+
+da solução do problema de forma correta (0 pt) e bem analisada pela discussão a partir das respostas obtidas (1,0 pt).
 
 ## Autoavaliação 
-Será avaliada a autoavaliação do aluno com as questões pertinentes sobre o atingimento de seus objetivos traçados no início do trabalho.
+A seleção e análise dos dados foi algo relativamento simples. A configuração do ambiente de nuvem no databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento.
