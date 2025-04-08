@@ -83,12 +83,12 @@ Tabelas de Dimensão
 `paises`: contém atributos geográficos e demográficos de cada país (nome, localização, área, densidade, etc.), ligada à tabela fato via id_pais
 `continentes`: representa os continentes associados aos países, normalizada como uma dimensão da dimensão `paises`, ligada via `id_continente`
 
-![diagrama ER](https://github.com/user-attachments/assets/479f6b7d-fac2-4fba-8c76-01af248c99da)
+<img src="img/diagrama_ER.png" alt="Diagrama Relacional" width="500">
 
-![diagrama conceitual](https://github.com/user-attachments/assets/a1ad3be3-ce2a-444d-87b9-70350314c9cb)
+<img src="img/diagrama_conceitual.png" alt="Diagrama Conceitual" width="500">
 
 
-Documentação do Catálogo de Dados:
+[📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
 
 ### Metadados
 Após a carga dos dados na plataforma Databricks e as tranformações, foi realizada inserção dos metadados utilizando SQL via notebook.
@@ -101,7 +101,43 @@ Após a carga dos dados na plataforma Databricks e as tranformações, foi reali
 ![qualidade_dados](https://github.com/user-attachments/assets/540cf834-7b55-4986-81ee-c67828e511a1)
 ![qualidade_paises](https://github.com/user-attachments/assets/4d86a33d-bb01-46dd-a24b-390510c95364)
 
-da solução do problema de forma correta (0 pt) e bem analisada pela discussão a partir das respostas obtidas (1,0 pt).
+### Solução do problema
+A primeira que questão proposta `Quais países possuem o maior consumo de energia total?` não estipulava um período de análise. Logo, determinei o recorte de últimos 5 anos (2015-2020). Realizei as queries com 2 focos: o consumo total do país e o consumo dos países per capita para  entender se haveria correspondência.
+
+| país           | Consumo total de eletricidade em TWh | Consumo médio per capita |
+|----------------|----------------------------|--------|
+| China          | 40754.39                  |26813.78|
+| United States  | 24626.97                  |78254.74|
+| India          | 8958.35                   |6367|
+| Japan          | 5987.22                   |40861.68|
+| Canada         | 3816.42                   |108686.58|
+
+
+Abaixo os países com maior consumo per capita
+
+|país	    |Consumo médio per capita |
+|-------    |-------------------|
+|Qatar	    |211679.29|
+|Iceland	|179074.73|
+|Singapore	|159826.6|
+|Bahrain	|148473.13|
+|United Arab Emirates|	134892.35|
+
+`Quais países são mais dependentes de fontes não renováveis?`
+
+Os dados revelam que 11 países dependem 100% de fontes não renováveis (combustíveis fosseis e nuclear)
+
+1. Gambia
+2. Guinea-Bissau
+3. Grenada
+4. Djibouti
+5. Kiribati
+6. Nauru
+7. Turkmenistan
+8. Saint Lucia
+9. Solomon Islands
+10. Bahamas
+11. Comoros
 
 ## Autoavaliação 
 A seleção e análise dos dados foi algo relativamento simples. A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notbook Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação.
