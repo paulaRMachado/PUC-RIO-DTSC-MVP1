@@ -39,6 +39,8 @@ Um script em Python executou o comando:
 
 ![extração](https://github.com/user-attachments/assets/dfdf5aa1-5398-4a2c-a07a-26599d3251b7)
 
+### Tratamentos iniciais
+Foram realizados tratamentos de normalização de chave da base dados e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base em informações obtidas no site:
 
 ## Carga  
 Inicialmente foi necessário criar o cluster no qual os dados seriam armazenados, seguindo a configuração padrão do Databrick para clusters.
@@ -58,9 +60,11 @@ Persistência na Nuvem: (Databricks Community): Como o Databricks Community desa
 Foram realizados tratamentos de normalização de chave da base dados, já iniciando o processo de modelagem, e inclusão de dimesões (continente, países signatários do Acordo de Paris) com base em informações obtidas no site:
 https://brasilescola.uol.com.br/geografia/acordo-paris.htm#:~:text=Resumo%20sobre%20o%20Acordo%20de%20Paris,-Acordo%20de%20Paris&text=%C3%89%20ratificado%20por%20194%20partes,aumento%20de%201%2C5%20%C2%BAC.
 
+
 ![Tranformacoes iniciais](https://github.com/user-attachments/assets/1c963369-1ccc-45e4-a596-eb9c7d425738)
 
 O processo completo pode ser visto no Notebook **Transformações do dado bruto**
+
 
 
 ## Modelagem 
