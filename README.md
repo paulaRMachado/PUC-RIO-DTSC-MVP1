@@ -107,7 +107,9 @@ Após a carga dos dados na plataforma Databricks e as tranformações, foi reali
 De modo geral os principais indicadores que serão utilizados na análise possuem acima de 95% dos dados não nulos. A grande ausência de dados em indicadores como `electricity_nuclear` podem indicar que certos países não reportam ou **não utilizam** energia nuclear. Já os indicadores `renewable_energy`, `financial_flows_developing_countries` e `renewable_generating_capacity_per_capita` devem ser descartados ou usados com muito cuidado e filtragem.
 
 ### Solução do problema
-As queries que respondem as questões podem ser consultadas no notebook :rotating_light:[]
+:rotating_light: As queries que respondem as questões podem ser consultadas no notebook  [Análise dos dados para solução do problema](Analise.ipynb)
+
+> As métricas utilizadas nesta análise mantêm unidades distintas por razões metodológicas: a geração elétrica total está em terawatts-hora (TWh), unidade adequada à quantificação agregada nacional, enquanto o consumo per capita permanece em quilowatts-hora (kWh), que expressa o consumo médio individual com precisão.
 
 1.`Quais países possuem o maior consumo de energia total?` 
 
@@ -170,16 +172,18 @@ Segundo os dados de 2020, apenas uma pequena parcela dos países (3,4%) alcanço
 
 5.`Há padrões regionais no consumo de energia (exemplo: Europa vs América do Sul)?`
 
-> Inserir AVG GPD PER CAPITA
+Os dados revelam padrões regionais no consumo de energia: continentes com maior PIB per capita, como Europa e América do Norte, apresentam também os maiores consumos médios de eletricidade por habitante, refletindo possivelmente infraestrutura energética avançada e alto padrão de vida. Já regiões como África e América do Sul, com menor renda, mostram consumo total e per capita significativamente mais baixos, o que indica limitações no acesso à energia e menor industrialização.
 
-| Continente    | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
-|---------------|---------------------------|--------- |
-| Asia          | 63.124,09                 |37.368,73 |
-| North America | 31.116,38                 |28.416,36 |
-| Europe        | 22.091,49                 |42.181,9  |
-| South America | 5.763,16                  |16.078,87 |
-| Africa        | 4.615,16                  |5.564,52  |
-| Oceania       | 1.791,09                  |22.916,69 |
+Além disso, a Europa se destaca por combinar alto consumo per capita com um consumo total menor que Ásia ou América do Norte, sugerindo maior eficiência e distribuição energética mais equilibrada. Há, portanto, uma relação direta entre desenvolvimento econômico e consumo energético, reforçando a importância da energia como vetor de desenvolvimento.
+
+| Continente    | Consumo total de eletricidade em TWh | Consumo médio per capita kWh| PIB médio per capita US$ |
+|---------------|---------------------------|--------- |--|
+| Asia          | 63.124,09                 |37.368,73 |13.304,29|
+| North America | 31.116,38                 |28.416,36 |21.708,35|
+| Europe        | 22.091,49                 |42.181,9  |32.672,92|
+| South America | 5.763,16                  |16.078,87 |8.320,56|
+| Africa        | 4.615,16                  |5.564,52  |2.595,24|
+| Oceania       | 1.791,09                  |22.916,69 |14.606,07|
 
 Para fins de análise as questões 6, 7 e 8 podem ser respondidas de forma muito similar uma vez que se entende que:
 - Apenas 4 países não são signatários do Acordo de Paris;
@@ -203,26 +207,34 @@ Utilizei o Power BI para construir as visualizações, com base em dados externo
 
 Não foi possível realizar uma análise mais aprofundada da questão, pois o conjunto de dados se limita ao ano de 2020. Para possibilitar uma abordagem mais específica, optei por focar no impacto da saída dos Estados Unidos do Acordo de Paris, ocorrida em 2017.
 
-Segundo os dados disponíveis, a geração global de eletricidade a partir de combustíveis fósseis apresentava uma queda acentuada apartir do ano de  2016, seguida por um aumento em 2018 — o que pode sugerir uma possível influência dessa decisão no cenário global.
+Segundo os dados disponíveis, a geração global de eletricidade a partir de combustíveis fósseis apresentava uma queda acentuada apartir do ano de  2016, seguida por um aumento em 2018 — o que pode sugerir uma possível influência dessa decisão no cenário global, ainda que os dados não permitam atribuir causalidade direta.
 
-<img src="img/saidaAcordo.png" alt="Tabela pais" width="600">
+<img src="img/saidaAcordo.png" alt="Tabela pais" width="800">
 
 Queria também entender como diferentes partes do mundo reagiram à essa decisão.  
 
-A segmentação por continentes revela, curiosamente, que a Ásia apresentou a maior variação relativa na geração global de eletricidade a partir de combustíveis fósseis — superando inclusive a própria América do Norte.
+A segmentação por continentes revela, curiosamente, que a Ásia apresentou a maior variação relativa na geração global de eletricidade a partir de combustíveis fósseis — superando inclusive a própria América do Norte. Outros continentes não apresentam flutação negativa significativa.
 
-<img src="img/multiplos1.png" alt="Segmentação por continentes" width="600">
+<img src="img/multiplos1.png" alt="Segmentação por continentes" width="800">
 
-<img src="img/multiplo2.png" alt="Segmentação por continentes" width="600">
+<img src="img/multiplo2.png" alt="Segmentação por continentes" width="800">
 
 ## Autoavaliação 
-A seleção e análise dos dados foi inicialmente algo relativamente simples de resolver, mas ao realizar propriamente as análises, percebo que as questões elaboradas carecem de recortes mais específicos e que algumas são muito similares, sendo respondidas com apenas uma visualização ou segmentações.
+A seleção e análise inicial dos dados foi relativamente simples. No entanto, ao avançar para as análises em si, percebi que algumas das questões propostas careciam de recortes mais específicos e que outras eram bastante similares entre si, podendo ser respondidas por meio de uma única visualização ou apenas com segmentações distintas.
 
-A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notebook Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação e familiarização com spark. Com todo o retabalho que tive, identifico que o registro das nomenclaturas dos atributos pode estar levemente irregular. 
+A configuração do ambiente em nuvem no Databricks foi uma das partes mais desafiadoras do processo. Enfrentei bastante retrabalho, especialmente porque o cluster criado desapareceu algumas vezes sem explicação clara. Embora tenha conseguido contornar o problema clonando os clusters desativados, o processo foi trabalhoso e repetitivo.
 
-Outra dificuldade foi a elaboração do Catálogo de Dados por falta de modelo e do modelo conceitual. Ao buscar por registros de catálogos na internet encontrei muitos itens diferentes, alguns confundidos com dicionário de dados ou até com os metadados. Segui a orientação dada na videoaula o melhor que pude.
+Inicialmente, optei por realizar as transformações externamente, utilizando Python, linguagem com a qual tenho mais familiaridade. No entanto, em determinado momento, decidi encarar o desafio de realizar as transformações diretamente no notebook do Databricks. Percebi que a execução dos códigos no ambiente Spark possui diferenças sutis, o que me levou a utilizar uma ferramenta de IA para adaptar os scripts e me familiarizar com o funcionamento do Spark. Devido a esse processo e aos vários ajustes realizados, reconheço que o registro das nomenclaturas dos atributos pode apresentar alguma inconsistência. 
+
+Outra dificuldade foi a elaboração do Catálogo de Dados por falta de modelo e do modelo conceitual.Ao buscar exemplos na internet, encontrei muitos formatos distintos, frequentemente confundidos com dicionários de dados ou metadados. Ainda assim, procurei seguir o máximo possível as orientações apresentadas na videoaula.
 
 ## ARQUIVOS
 :rotating_light: [📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
 
-:rotating_light: [Transformações do dado bruto](transformacoes_do_dado_bruto.ipynb).
+:rotating_light: [Transformações do dado bruto](transformacoes_do_dado_bruto.ipynb)
+
+:rotating_light: [Análise dos dados para solução do problema](Analise.ipynb) - Para  download esse notebook foi convertido de SQL para python.
+
+:rotating_light: [📄 Modelo Conceitual (PDF)](Conceptualmodel_BRMW.pdf)
+
+:rotating_light: [📄 Modelo Lógico (PDF)](Logicmodel_BRMW.pdf)
