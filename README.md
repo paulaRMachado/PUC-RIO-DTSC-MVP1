@@ -50,7 +50,7 @@ Em seguida foi realizado o full load dos dados brutos e a partir do notebook cri
 ![Tabela](img/criacaoTabela.png)
 
 
-Persistência na Nuvem: (Databricks Community): Como o Databricks Community desativa o cluster, o dado, nesse caso NÃO é persistente, precisando ser recarregado a cada nova entrada na plataforma
+Persistência na Nuvem: (Databricks Community): Como o Databricks Community desativa o cluster, o dado, nesse caso NÃO é persistente, precisando ser recarregado a cada nova entrada na plataforma.
 
 
 ### Tratamentos iniciais - Transformação
@@ -103,15 +103,17 @@ Após a carga dos dados na plataforma Databricks e as tranformações, foi reali
 <img src="img/qualidade_paises.png" alt="Tabela pais" width="400">
 
 <img src="img/qualidade_dados.png" alt="Tabela dados" width="500">
-De modo geral os principais indicadores que serão utilizados na possuem acima de 95% dos dados. A grande ausência de dados em indicadores como `electricity_nuclear` podem indicar que certos países não reportam ou **não utilizam** energia nuclear. Já os indicadores `renewable_energy`, `financial_flows_developing_countries` e `renewable_generating_capacity_per_capita` devem ser descartados ou usados com muito cuidado e filtragem.
+
+De modo geral os principais indicadores que serão utilizados na análise possuem acima de 95% dos dados não nulos. A grande ausência de dados em indicadores como `electricity_nuclear` podem indicar que certos países não reportam ou **não utilizam** energia nuclear. Já os indicadores `renewable_energy`, `financial_flows_developing_countries` e `renewable_generating_capacity_per_capita` devem ser descartados ou usados com muito cuidado e filtragem.
 
 ### Solução do problema
 As queries que respondem as questões podem ser consultadas no notebook :rotating_light:[]
 
 1.`Quais países possuem o maior consumo de energia total?` 
-Não há um período de análiseestipulado. Logo, determinei o recorte de últimos 5 anos (2015-2020). Realizei as queries com 2 focos: o consumo total do país e o consumo dos países per capita para  entender se haveria correspondência.
 
-Respondendo literalmente a questão proposta entende-se que os países com maior consumo total refletem não apenas o tamanho de suas populações, mas também o grau de industrialização e demanda energética. Os EUA com ambos os indicadores elevados destaca-se  Note que a Índia apesar de estar entre os 5 maiores consumidores possui o mais baixo consumo per capita 
+Não há um período de análise estipulado. Logo, determinei que o recorte seria dos últimos 5 anos (2015-2020). Realizei as queries com 2 focos: o consumo total do país e o consumo dos países per capita para entender se haveria correspondência entre os mesmos.
+
+Respondendo literalmente à questão proposta, entende-se que os países com maior consumo total refletem não apenas o tamanho de suas populações, mas também o grau de industrialização e demanda energética. Os EUA com ambos os indicadores elevados destaca-se  em ambos os quesitos. Note que a Índia,apesar de estar entre os 5 maiores consumidores, possui o mais baixo consumo per capita. 
 
 
 | país           | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
@@ -123,7 +125,7 @@ Respondendo literalmente a questão proposta entende-se que os países com maior
 | Canada         | 3.816,42                   |108.686,58|
 
 
-Entretanto, quando o foco se volta ao consumo per capita, o panorama muda consideravelmente. Países com pequena população, alta renda per capita e climas extremos — como Qatar, Islândia , Emirados Árabes e Bahrain.
+Entretanto, quando o foco se volta apenas para o consumo per capita, o panorama muda consideravelmente. Países com pequena população, alta renda per capita e climas extremos — como Qatar, Islândia , Emirados Árabes e Bahrain se destacam como maiores consumidores.
 
 |país	    |Consumo médio per capita kWh|
 |-----------|-----------|
@@ -133,9 +135,10 @@ Entretanto, quando o foco se volta ao consumo per capita, o panorama muda consid
 |Bahrain	|148.473,13 |
 |United Arab Emirates|	134.892,35|
 
-A dissociação entre os rankings revela uma dinâmica importante: enquanto países como China e Índia concentram os maiores consumos totais, isso se deve majoritariamente ao tamanho populacional, e não a um alto consumo individual. Já Islândia e Emirados Árabes Unidos, embora não entrem no topo de consumo em  termos absolutos, apresentam padrões de consumo individual significativamente elevados.
+A dissociação entre os rankings revela uma dinâmica importante: enquanto países como China e Índia concentram os maiores consumos totais, isso se deve majoritariamente ao tamanho populacional, e não a um alto consumo individual. Já Islândia e Emirados Árabes Unidos, embora não entrem no topo de consumo em termos absolutos, apresentam padrões de consumo individual significativamente elevados.
 
 2.`Quais países são mais dependentes de fontes não renováveis?`
+
 Para esse questionamento, determinei que apenas os dados do último ano registrado devem ser considerados.
 Os dados revelam que, em 2020, 11 países dependiam 100% de fontes não renováveis (combustíveis fosseis e/ou nuclear).É curioso notar que sete desses, são pequenas ilhas, tanto em área quanto em população.
 
@@ -152,6 +155,7 @@ Os dados revelam que, em 2020, 11 países dependiam 100% de fontes não renováv
 11. Comoros
 
 3.`Quais países possuem maior participação de fontes renováveis?`
+
 Para esse questionamento também determino que apenas os dados do último ano registrado devem ser considerados.
 Segundo os dados de 2020, apenas uma pequena parcela dos países (3,4%) alcançou a totalidade da geração elétrica por meio de fontes renováveis.
 
@@ -164,21 +168,59 @@ Segundo os dados de 2020, apenas uma pequena parcela dos países (3,4%) alcanço
 |Albania|100% |
 |Bhutan |100% |
 
-4.`Há padrões regionais no consumo de energia (exemplo: Europa vs América do Sul)?`
+5.`Há padrões regionais no consumo de energia (exemplo: Europa vs América do Sul)?`
 
-| país          | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
+> Inserir AVG GPD PER CAPITA
+
+| Continente    | Consumo total de eletricidade em TWh | Consumo médio per capita kWh|
 |---------------|---------------------------|--------- |
-| Asia          | 63124.09                  |37.368,73 |
-| North America | 31116.38                  |28.416,36 |
-| Europe        | 22091.49                  |42.181,9  |
-| South America | 5763.16                   |16.078,87 |
-| Africa        | 4615.16                   |5.564,52  |
-| Oceania       | 1791.09                   |22.916,69 |
+| Asia          | 63.124,09                 |37.368,73 |
+| North America | 31.116,38                 |28.416,36 |
+| Europe        | 22.091,49                 |42.181,9  |
+| South America | 5.763,16                  |16.078,87 |
+| Africa        | 4.615,16                  |5.564,52  |
+| Oceania       | 1.791,09                  |22.916,69 |
+
+Para fins de análise as questões 6, 7 e 8 podem ser respondidas de forma muito similar uma vez que se entende que:
+- Apenas 4 países não são signatários do Acordo de Paris;
+- Emissões de carbono estão intimamente ligadas a combustíveis fósseis. 
+
+6.`Quais países estão reduzindo o consumo de fontes fósseis ao longo do tempo?`
+
+7.`Os países signatários do Acordo de Paris estão reduzindo suas emissões de carbono??`
+
+8.`Quais países estão mais alinhados com as metas do Acordo de Paris?`
+
+Utilizei o Power BI para construir as visualizações, com base em dados externos, uma vez que a versão Community do Databricks não permite conexão direta com a ferramenta. A partir da medida`Taxa de emissão`, que calcula a flutuação nas emissões entre os anos de 2000 e 2019, foi possível identificar os países que apresentaram as maiores reduções no período analisado.
+
+
+<img src="img/taxadeemissao.png" alt="Emissões de carbono" width="800">
+
+
+9.`Houve impacto significativo no consumo energético de países que saíram do Acordo de Paris?`
+
+10.`A saída ou redução de compromisso de alguns países afetou o progresso global na redução de emissões?`
+
+Não foi possível realizar uma análise mais aprofundada da questão, pois o conjunto de dados se limita ao ano de 2020. Para possibilitar uma abordagem mais específica, optei por focar no impacto da saída dos Estados Unidos do Acordo de Paris, ocorrida em 2017.
+
+Segundo os dados disponíveis, a geração global de eletricidade a partir de combustíveis fósseis apresentava uma queda acentuada apartir do ano de  2016, seguida por um aumento em 2018 — o que pode sugerir uma possível influência dessa decisão no cenário global.
+
+<img src="img/saidaAcordo.png" alt="Tabela pais" width="600">
+
+Queria também entender como diferentes partes do mundo reagiram à essa decisão.  
+
+A segmentação por continentes revela, curiosamente, que a Ásia apresentou a maior variação relativa na geração global de eletricidade a partir de combustíveis fósseis — superando inclusive a própria América do Norte.
+
+<img src="img/multiplos1.png" alt="Segmentação por continentes" width="600">
+
+<img src="img/multiplo2.png" alt="Segmentação por continentes" width="600">
 
 ## Autoavaliação 
-A seleção e análise dos dados foi inicialmente algo relativamente simples. A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notbooke Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação e familiarização com pyspark. Com todo o retabalho que tive, identifico que o registro das nomenclaturas dos atributos pode estar levemente irregular. 
+A seleção e análise dos dados foi inicialmente algo relativamente simples de resolver, mas ao realizar propriamente as análises, percebo que as questões elaboradas carecem de recortes mais específicos e que algumas são muito similares, sendo respondidas com apenas uma visualização ou segmentações.
 
-Outra dificuldade foi a elaboração do Catálogo de Dados por falta de modelo e do modelo conceitual. Ao buscar por registros de catálogos na internet encontrei muitos itens diferentes, alguns confundidos com dicionario de dadosou até com os metadados. Segui a orientação dada na videoaula o melhor que pude.
+A configuração do ambiente de nuvem no Databricks foi algo bem penoso com muito retrabalho, o cluster criado no Databricks desapareceu algumas vezes após a criação. Não consegui entender a razão desse desaparecimento, mas como é possível clonar o cluster desativado, fui realizando esse processo a cada etapa. A princípio também optei por realizar realizar as transformações de forma externa por ter mais familiaridade com o python. Em dado momento resolvi encarar o desafio de executar as transformações dentro do notebook Databricks e após perceber que a execução dos códigos é levemente diferente utilizei uma ferramenta de IA para ajudar nessa adaptação e familiarização com spark. Com todo o retabalho que tive, identifico que o registro das nomenclaturas dos atributos pode estar levemente irregular. 
+
+Outra dificuldade foi a elaboração do Catálogo de Dados por falta de modelo e do modelo conceitual. Ao buscar por registros de catálogos na internet encontrei muitos itens diferentes, alguns confundidos com dicionário de dados ou até com os metadados. Segui a orientação dada na videoaula o melhor que pude.
 
 ## ARQUIVOS
 :rotating_light: [📄 Catálogo de Dados (PDF)](img/Catálogo%20de%20dados.pdf)
